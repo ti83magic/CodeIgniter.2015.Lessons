@@ -27,7 +27,13 @@ and open the template in the editor.
             <hr>
         </header>
         <section>
-            Weet je zeker dat je leverancier <?php $leverancier->bedrijf ?> wilt verwijderen?
+            <div>Voor deze leverancier bestaan er producten. Kies tussen:</div>
+            <br>
+            <div><?php 
+                echo '- '.anchor("leverancier/verwijder/$leverancier->id/forceer", 'Leverancier en producten toch verwijderen').'<br>';
+                echo '- '. anchor("leverancier/index", 'Leverancier niet verwijderen').'<br>';
+            ?></div>
+            
 
         </section>
         <div>

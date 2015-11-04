@@ -22,6 +22,9 @@
         <h4>Bestel een product</h4>
 
         <?php
+        
+        echo anchor('product/inBestelling','Toon producten in bestelling').'<br><br>';
+        
         foreach ($producten as $product) {
             echo '<div>' . anchor("shop/voegtoe/$product->id", $product->nederlandseNaam) . " ({$product->categorie->naam})" . "</div>";
         }

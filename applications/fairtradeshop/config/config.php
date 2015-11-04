@@ -24,7 +24,7 @@ $config['image_path'] = 'images/';
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://eduphp.thomasmore.be/~r0597125/ci';
+$config['base_url']	= 'http://eduphp.thomasmore.be/~r0597125/CodeIgniter.2015.Lessons/';
 
 /*
 |--------------------------------------------------------------------------

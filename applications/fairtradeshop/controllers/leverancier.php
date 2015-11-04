@@ -80,6 +80,7 @@ class Leverancier extends CI_Controller {
         
         if(count($producten)>0 && $forceer==false) {
             $data['leverancier'] = $this->leverancier_model->get($id);
+            
             $this->load->view('leverancier_verwijderen', $data);
         } else {
             foreach($producten as $product) {

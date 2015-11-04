@@ -1,4 +1,8 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+// Hier staan de inloggegevens in. Deze worden niet naar github gestuurd.
+include_once "gegevens.php";
+
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -49,9 +53,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'r0597125';
-$db['default']['password'] = 'iwk2jF84hf';
-$db['default']['database'] = 'r0597125';
+$db['default']['username'] = $username;
+$db['default']['password'] = $password;
+$db['default']['database'] = $database;
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE; // Heel belanhrijk- anders sluiten je verbindingen niet meer.
