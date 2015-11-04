@@ -1,2 +1,3 @@
 # Passwords #
-*.password
+database.php
+/nbproject/private/
