@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Playground: examples</title>
-
+        <?php echo link_tag('css/bootstrap.css'); ?>        
     </head>
     <body>
 
@@ -18,7 +18,8 @@
 
             <p>
                 <?php
-                echo anchor('examples/table', 'Tables');
+                echo anchor('examples/table', 'Tables') . '<br>';
+                echo anchor('examples/bootstrap', 'Bootstrap') . '<br>';
                 ?>
             </p>
 

@@ -25,19 +25,18 @@ class Table {
 
     private $level = 0;
     private $spacer = '    ';
-    
+
     public function setLevel($level) {
-        if($level>=0) {
+        if ($level >= 0) {
             $this->level = $level;
         }
     }
 
-        public function setSpacer($spacer) {
-        if(is_string($spacer)) {
+    public function setSpacer($spacer) {
+        if (is_string($spacer)) {
             $this->spacer = $spacer;
         }
     }
-
 
     // Maakt een volledige tabel. Als er een object wordt doorgegeven als $data,
     // dan wordt er een tabel gemaakt met als headers de members van dat object, en 
@@ -58,14 +57,14 @@ class Table {
 
         $headers = $this->prepareParameters($headers, $data);
         $fields = $this->prepareParameters($fields, $data);
-        
+
         // Open de tabel, met de juiste headers.
         $ret = $this->open($headers);
 
         // voor elk element in $data, druk alle velden uit $fields af.
         foreach ($data as $entry) {
             $ret .= $this->rowOpen();
-            
+
             foreach ($fields as $field) {
                 $ret .= $this->data($this->getWaardeVanMember($entry, $field));
             }
@@ -199,9 +198,10 @@ class Table {
         if (is_string($config)) {
             $config = explode('|', $config);
         }
-        
+
         return $config;
     }
+
 }
 
 /* End of file Table.php */

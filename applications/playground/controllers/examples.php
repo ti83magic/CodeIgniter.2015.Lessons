@@ -9,6 +9,8 @@ class Examples extends CI_Controller {
         parent::__construct();
 
         $this->load->library('Table');
+        $this->load->library('Bootstrap');
+        
         $this->load->helper('html');
         $this->load->helper('url');
     }
@@ -34,6 +36,24 @@ class Examples extends CI_Controller {
         $data['people'] = $test;
 
         $this->load->view('examples_table', $data);
+    }
+    
+    public function bootstrap() {
+        $links[0] = new stdClass();
+        $links[1] = new stdClass();
+        $links[2] = new stdClass();
+        
+        $links[0]->url = '#';
+        $links[0]->text = 'Home';
+        $links[1]->url = '#';
+        $links[1]->text = 'Examples';
+        $links[2]->url = '#';
+        $links[2]->text = 'Bootstrap';
+        
+        $data['links'] = $links;
+        
+        $this->load->view('examples_bootstrap', $data);
+        
     }
 
 }
