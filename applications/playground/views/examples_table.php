@@ -2,13 +2,19 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Welcome to CodeIgniter</title>
+        <title>Examples: Table</title>
 
     </head>
     <body>
 
         <div>
             <?php
+            
+            $links = array(array('examples/index','home'),array('examples/table','table'));
+            echo breadcrumbs($links);
+            
+            echo heading('Examples: Table',1);          
+            
             $this->table->setLevel(2);
 
             // ---------------------------------------------------------------------

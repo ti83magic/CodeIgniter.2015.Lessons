@@ -26,7 +26,7 @@ $config['base_url']	= 'http://eduphp.thomasmore.be/~r0597125/CodeIgniter.2015.Le
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = 'playground.php';
 
 /*
 |--------------------------------------------------------------------------
