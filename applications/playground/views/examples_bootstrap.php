@@ -26,10 +26,21 @@ if (!defined('BASEPATH')) {
         <?php echo link_tag('css/bootstrap.css'); ?>        
     </head>
     <body>
+
         <?php
-        $this->bootstrap->setLevel(1);
+        $this->bootstrap->setLevel(2);
         
+        echo heading('Examples: Bootstrap', 1) . "\n";
+        
+        echo heading('Breadcrumbs', 3) . "\n";
         echo $this->bootstrap->breadcrumbs($links);
+        
+        echo heading('Icons', 3) . "\n";
+        echo $this->bootstrap->icon('eye-open');
+        echo $this->bootstrap->icon('glyphicon-heart');
+        echo $this->bootstrap->icon('glyphicon glyphicon-magnet');
+        
+        
         ?>
     </body>
 </html>

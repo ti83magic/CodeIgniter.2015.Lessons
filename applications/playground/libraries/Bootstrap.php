@@ -39,7 +39,7 @@ class Bootstrap {
             if ($link == $lastlink) {
                 $ret.=$this->spacers(1) . "<li class=\"active\">$link->text</li>\n";
             } else {
-                $ret.=$this->spacers(1) . '<li>'. anchor($link->url, $link->text) . "</li>\n";
+                $ret.=$this->spacers(1) . '<li>' . anchor($link->url, $link->text) . "</li>\n";
                 // <a href = \"$link->url\">$link->text</a>
             }
         }
@@ -47,6 +47,23 @@ class Bootstrap {
         $ret.=$this->spacers(0) . "</ol>\n\n";
 
         return $ret;
+    }
+
+    // returns the string to insert a glyphicon.
+    //
+    // Use either of the following formats:
+    // icon("sort-by-alphabet)
+    // icon("glyphicon-sort-by-alphabet)
+    // icon("glyphicon glyphicon-sort-by-alphabet)
+    public function icon($name) {
+        if (strpos($name, 'glyphicon') === false) {
+            $name = 'glyphicon glyphicon-' . $name;
+        } else
+        if (strpos($name, 'glyphicon ') === false) {
+            $name = 'glyphicon ' . $name;
+        }
+
+        return $this->spacers(0) . "<span class=\"$name\" aria-hidden=\"true\"></span>\n";
     }
 
     public function setLevel($level) {
