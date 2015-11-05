@@ -23,13 +23,16 @@ and open the template in the editor.
             <p>
                 Veel plezier!
             </p>
-            
+
             <h2>Applicaties</h2>
             <p><a href="bmw.php">BMW</a></p>
             <p><a href="fairtradeshop.php">Fairtradeshop</a></p>
 
             <h2>Extra</h2>
             <p><a href="playground.php">Playground</a></p>
+
+            
+            
         </div>
     </body>
 </html>
