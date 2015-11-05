@@ -1,5 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+include_once "gegevens.php";
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -224,7 +226,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = $encryption;
 
 /*
 |--------------------------------------------------------------------------
