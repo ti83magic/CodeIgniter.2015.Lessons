@@ -7,7 +7,7 @@
     </head>
     <body>
 
-        <div>
+        <div class="container">
             <h1>Examples</h1>
             <p>
                 Below you'll find the links to several examples of functionality

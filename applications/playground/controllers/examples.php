@@ -22,6 +22,7 @@ class Examples extends CI_Controller {
     public function table() {
         $test['Anthony'] = new stdClass();
         $test['Karen'] = new stdClass();
+        $test['Wolf'] = new stdClass();
 
         $test['Anthony']->id = 1;
         $test['Anthony']->name = "Anthony";
@@ -32,6 +33,13 @@ class Examples extends CI_Controller {
         $test['Karen']->name = "Karen";
         $test['Karen']->surname = "Roelant";
         $test['Karen']->marriedTo = $test['Anthony'];
+        
+        $test['Wolf']->id = 3;
+        $test['Wolf']->name = "Wolf";
+        $test['Wolf']->surname = "Woudenberg";
+        $test['Wolf']->marriedTo = null;
+        
+        
 
         $data['people'] = $test;
 

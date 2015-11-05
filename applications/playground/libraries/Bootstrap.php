@@ -22,10 +22,9 @@ if (!defined('BASEPATH')) {
 
 
 class Bootstrap {
-
-    private $level = 0;
-    private $spacer = '    ';
-
+    var $level = 0;
+    var $spacer = '    ';
+    
     public function __contruct() {
         $this->load->helper('url');
     }
@@ -66,17 +65,7 @@ class Bootstrap {
         return $this->spacers(0) . "<span class=\"$name\" aria-hidden=\"true\"></span>\n";
     }
 
-    public function setLevel($level) {
-        if ($level >= 0) {
-            $this->level = $level;
-        }
-    }
-
-    public function setSpacer($spacer) {
-        if (is_string($spacer)) {
-            $this->spacer = $spacer;
-        }
-    }
+   
 
     // Returns n spacers, where n is $level if $isAbsolute is true. If not, n
     // equals $this->level + $level.

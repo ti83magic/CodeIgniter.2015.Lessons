@@ -23,21 +23,11 @@ if (!defined('BASEPATH')) {
 
 class Table {
 
-    private $level = 0;
-    private $spacer = '    ';
+    var $level = 0;
+    var $spacer = '    ';
+    var $class = 'table table-striped';
 
-    public function setLevel($level) {
-        if ($level >= 0) {
-            $this->level = $level;
-        }
-    }
-
-    public function setSpacer($spacer) {
-        if (is_string($spacer)) {
-            $this->spacer = $spacer;
-        }
-    }
-
+    
     // Maakt een volledige tabel. Als er een object wordt doorgegeven als $data,
     // dan wordt er een tabel gemaakt met als headers de members van dat object, en 
     // de inhoud van die members als data. Wordt er een array van objecten
@@ -80,7 +70,7 @@ class Table {
     // $data een array, dan worden de waarden uit die array als headers gebruikt. 
     public function open($data = null) {
         $ret = "\n\n" .
-                $this->spacers(0) . "<table>\n" .
+                $this->spacers(0) . "<table class=\"$this->class\">\n" .
                 $this->spacers(1) . "<thead>\n" .
                 $this->rowOpen();
 
@@ -178,6 +168,10 @@ class Table {
     //
     // TODO: There is no errorchecking on this function yet.
     private function getWaardeVanMember($obj, $memberKeten) {
+        if ($obj === null) {
+            return '';
+        }
+
         $members = explode("->", $memberKeten);
 
         if (count($members) == 1) {

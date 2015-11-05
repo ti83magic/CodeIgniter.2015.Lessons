@@ -7,14 +7,11 @@
     </head>
     <body>
 
-        <div>
+        <div class="container">
             <?php
-            $links = array(array('examples/index', 'home'), array('examples/table', 'table'));
-            echo breadcrumbs($links);
-
             echo heading('Examples: Table', 1);
 
-            $this->table->setLevel(2);
+            $this->table->level = 3;
 
             // ---------------------------------------------------------------------
             // Example 1
@@ -35,6 +32,22 @@
 
             echo heading('Example 3: Custom headers and custom (nested) fields', 3);
             echo $this->table->create($people, $headers, $fields);
+
+            // ---------------------------------------------------------------------
+            // Example 4
+            $headers = array('Name', 'Married to');
+            $this->table->class = 'table table-bordered';
+
+            echo heading('Example 4: Constructed, with different markup', 3);
+
+            echo $this->table->open($headers);
+            foreach ($people as $person) {
+                echo $this->table->rowOpen();
+                echo $this->table->data($person->name . ' ' . $person->surname);
+                echo $this->table->data(($person->marriedTo == null ? 'No one' : $person->marriedTo->name . ' ' . $person->marriedTo->surname));
+                echo $this->table->rowClose();
+            }
+            echo $this->table->close();
             ?>
 
         </div>
