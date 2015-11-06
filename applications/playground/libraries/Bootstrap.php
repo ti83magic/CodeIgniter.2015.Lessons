@@ -244,30 +244,36 @@ class Bootstrap {
         // slechts 2 (bijvoorbeeld).
         $startPage = ($currentPage - $neighbourCount < 1 ? 1 : $currentPage - $neighbourCount); // lower bound
         $startPage = ($startPage < $lastPage - 2 * $neighbourCount ? $startPage : $lastPage - 2 * $neighbourCount); // upper bound
-
+        $startPage = ($startPage < 1? 1 : $startPage); // Make sure we're not below 1.
+        
         // Als er minder pagina's zijn dan 2n+1, toon ze dan maar allemaal.
         $pageCount = ($lastPage < 2 * $neighbourCount + 1 ? $lastPage : 2 * $neighbourCount + 1);
 
         // Maak eindelijk de middelste knoppen.
-        for($i=$startPage; $i<$startPage+$pageCount; $i++) {
-            $addendum = ($i==$currentPage ? 'btn-primary disabled' : 'btn-default'); // nakijken
+        for ($i = $startPage; $i < $startPage + $pageCount; $i++) {
+            $addendum = ($i == $currentPage ? 'btn-primary disabled' : 'btn-default'); // nakijken
             $attributes = "role='button' class='btn $addendum'";
-            $link = anchor($baseUrl . (($i-1) * $perPage), $i, $attributes);
+            $link = anchor($baseUrl . (($i - 1) * $perPage), $i, $attributes);
 
             array_push($groups['middle'], $link);
         }
 
         // Voeg alles samen
         $ret = "\n\n" . $this->spacers(0) . '<div class="btn-toolbar" role="toolbar" aria-label="...">' . "\n";
+        // Als we niet moeten splitsen, mag de groep hier al beginnen...
+        $ret.=(!$splitButtons ? $this->spacers(1) . '<div class="btn-group" role="group" aria-label="...">' . "\n" : '');
+
         foreach ($groups as $group) {
-            $ret.=$this->spacers(1) . '<div class="btn-group" role="group" aria-label="...">' . "\n";
+            // ...en anders maken we een groep aan per deel.
+            $ret.=($splitButtons ? $this->spacers(1) . '<div class="btn-group" role="group" aria-label="...">' . "\n" : '');
             foreach ($group as $line) {
                 $ret.=$this->spacers(2) . $line;
             }
-            $ret.=$this->spacers(1) . "</div>\n";
+            $ret.=($splitButtons ? $this->spacers(1) . "</div>\n" : '');
         }
-        $ret.=$this->spacers(0) . "</div>\n\n";
 
+        $ret.=(!$splitButtons ? $this->spacers(1) . "</div>\n" : '');
+        $ret.=$this->spacers(0) . "</div>\n\n";
 
         return $ret;
     }

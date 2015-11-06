@@ -60,6 +60,10 @@ class Examples extends CI_Controller {
         
         $data['links'] = $links;
         $data['current_page'] = $page;
+        $data['nRows'] = 100;
+        $data['perPage'] = 10;
+        
+
         
         $this->load->view('examples_bootstrap', $data);
         

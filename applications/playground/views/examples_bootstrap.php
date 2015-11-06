@@ -44,14 +44,19 @@ if (!defined('BASEPATH')) {
             
             echo heading('Pagination', 3) . "\n";
             echo $this->typography->auto_typography("Standaard paginering met een bootstrap uiterlijk:");
-            echo $this->bootstrap->paging('examples/bootstrap/', 100, 10, $current_page) . "<br>\n";
+            echo $this->bootstrap->paging('examples/bootstrap/', $nRows, $perPage, $current_page) . "<br>\n";
             
             echo $this->typography->auto_typography("Aangepaste paginering met gespleten groepen:");
-            echo $this->bootstrap->pagingSplit('examples/bootstrap/', 100, 10, $current_page) . "<br>\n";
+            echo $this->bootstrap->pagingSplit('examples/bootstrap/', $nRows, $perPage, $current_page) . "<br>\n";
             
             echo $this->typography->auto_typography("TESTEN");
-            echo "Alles: " . $this->bootstrap->paging3('examples/bootstrap/', 100, 10, $current_page, true, true) . "<br>\n";
-            echo "Alleen de nodige: " . $this->bootstrap->paging3('examples/bootstrap/', 100, 10, $current_page, true, false) . "<br>\n";
+            $nRows = 40;
+            $perPage = 10;
+            
+            echo "Alles, gesplitst: " . $this->bootstrap->paging3('examples/bootstrap/', $nRows, $perPage, $current_page, true, true) . "<br>\n";
+            echo "Alles, niet gesplitst: " . $this->bootstrap->paging3('examples/bootstrap/', $nRows, $perPage, $current_page, false, true) . "<br>\n";
+            echo "Niet alles, gesplitst: " . $this->bootstrap->paging3('examples/bootstrap/', $nRows, $perPage, $current_page, true, false) . "<br>\n";
+            echo "Niet alles, niet gesplitst: " . $this->bootstrap->paging3('examples/bootstrap/', $nRows, $perPage, $current_page, false, false) . "<br>\n";
 
             ?>
 
