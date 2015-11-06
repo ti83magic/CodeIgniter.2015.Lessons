@@ -24,6 +24,7 @@ if (!defined('BASEPATH')) {
         <meta charset="UTF-8">
         <title>Examples: Bootstrap</title>
         <?php echo link_tag('css/bootstrap.css'); ?>        
+        <?php echo link_tag('css/custom.css'); ?>        
     </head>
     <body>
         <div class="container">
@@ -42,9 +43,11 @@ if (!defined('BASEPATH')) {
             echo $this->bootstrap->icon('glyphicon glyphicon-magnet');
             
             echo heading('Pagination', 3) . "\n";
-            echo $this->typography->auto_typography("NB: Hier zit nog een foutje in, want de laatste klop heeft geen afronding. Ook wil ik de knoppen nog uit elkaar halen, dat is voor later.");
-            echo $this->bootstrap->paging('#', 300, 20, 120) . "<br>\n";
-            echo $this->bootstrap->paging('#', 300, 60, 60);
+            echo $this->typography->auto_typography("Standaard paginering met een bootstrap uiterlijk:");
+            echo $this->bootstrap->paging('examples/bootstrap/', 300, 20, $current_page) . "<br>\n";
+            
+            echo $this->typography->auto_typography("Aangepaste paginering met gespleten groepen:");
+            echo $this->bootstrap->pagingSplit('examples/bootstrap/', 300, 20, $current_page) . "<br>\n";
             
             
             ?>

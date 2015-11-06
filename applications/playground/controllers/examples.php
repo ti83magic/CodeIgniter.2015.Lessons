@@ -46,7 +46,7 @@ class Examples extends CI_Controller {
         $this->load->view('examples_table', $data);
     }
     
-    public function bootstrap() {
+    public function bootstrap($page = 0) {
         $links[0] = new stdClass();
         $links[1] = new stdClass();
         $links[2] = new stdClass();
@@ -59,6 +59,7 @@ class Examples extends CI_Controller {
         $links[2]->text = 'Bootstrap';
         
         $data['links'] = $links;
+        $data['current_page'] = $page;
         
         $this->load->view('examples_bootstrap', $data);
         
