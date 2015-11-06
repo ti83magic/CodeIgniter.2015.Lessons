@@ -42,17 +42,14 @@ if (!defined('BASEPATH')) {
             echo $this->bootstrap->icon('glyphicon-heart');
             echo $this->bootstrap->icon('glyphicon glyphicon-magnet');
             
-            echo heading('Pagination', 3) . "\n";
+            echo heading('Oude paginering', 3) . "\n";
             echo $this->typography->auto_typography("Standaard paginering met een bootstrap uiterlijk:");
             echo $this->bootstrap->paging('examples/bootstrap/', $nRows, $perPage, $current_page) . "<br>\n";
             
             echo $this->typography->auto_typography("Aangepaste paginering met gespleten groepen:");
             echo $this->bootstrap->pagingSplit('examples/bootstrap/', $nRows, $perPage, $current_page) . "<br>\n";
             
-            echo $this->typography->auto_typography("TESTEN");
-            $nRows = 40;
-            $perPage = 10;
-            
+            echo heading('Laatste versie paginering', 3);            
             echo "Alles, gesplitst: " . $this->bootstrap->paging3('examples/bootstrap/', $nRows, $perPage, $current_page, true, true) . "<br>\n";
             echo "Alles, niet gesplitst: " . $this->bootstrap->paging3('examples/bootstrap/', $nRows, $perPage, $current_page, false, true) . "<br>\n";
             echo "Niet alles, gesplitst: " . $this->bootstrap->paging3('examples/bootstrap/', $nRows, $perPage, $current_page, true, false) . "<br>\n";

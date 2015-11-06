@@ -189,9 +189,9 @@ class Table {
 
     private function prepareParameters($config, $data) {
         if ($config == null) {
-            if (is_object($data)) {
+            //if (is_object($data)) {
                 $config = array_keys(get_object_vars(reset($data)));
-            }
+            //}
         }
 
         if (is_string($config)) {
