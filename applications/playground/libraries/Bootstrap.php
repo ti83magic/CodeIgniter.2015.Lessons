@@ -140,13 +140,13 @@ class Bootstrap {
 
         $config['num_tag_open'] = $this->spacers(1) . '';
         $config['num_tag_close'] = "\n";
-        
+
         $config['anchor_class'] = 'class="btn btn-default" role="button" ';
 
         $this->_CI->pagination->initialize($config);
 
         $linkString = $this->_CI->pagination->create_links();
-        
+
         // Do the ugly postprocessing.
         $links = explode("\n", $linkString);
         $groups[0] = array();
@@ -166,20 +166,109 @@ class Bootstrap {
                 array_push($groups[1], $link);
             }
         }
-        
+
         // Now that we have three groups of buttons, create the code that we need.
 
-        $ret = "\n\n".'<div class="btn-toolbar" role="toolbar" aria-label="...">' . "\n";
-        
-        foreach($groups as $group) {
+        $ret = "\n\n" . '<div class="btn-toolbar" role="toolbar" aria-label="...">' . "\n";
+
+        foreach ($groups as $group) {
             $ret.='    <div class="btn-group" role="group" aria-label="...">' . "\n";
-            foreach($group as $str) {
-                $ret.=$str."\n";
+            foreach ($group as $str) {
+                $ret.=$str . "\n";
             }
             $ret.="    </div>\n";
         }
         $ret.="</div>\n\n";
-               
+
+        return $ret;
+    }
+
+    // Compleet opnieuw, zonder gebruik te maken van de paging library. Zal
+    // mooiere code moeten opleveren.
+    // $showAllButtons: als dit op true staat, laten we de first/prev/next/last
+    // knoppen ook zien als ze niet nodig zijn.
+    public function paging3($baseUrl, $totalRows, $perPage, $currentRow, $splitButtons = true, $showAllButtons = false) {
+        // Settings
+        $neighbourCount = 2; // The amount of buttons next to the current one. We'll always show twice this, plus 1.
+        $firstLink = 'Eerste';
+        $prevLink = '<span aria-hidden="true">&laquo;</span>';
+        $nextLink = '<span aria-hidden="true">&raquo;</span>';
+        $lastLink = 'Laatste';
+
+        // Berekend, afblijven.
+        $currentPage = 1 + floor($currentRow / $perPage);
+        $lastPage = floor($totalRows / $perPage);
+
+        $groups['left'] = array();
+        $groups['middle'] = array();
+        $groups['right'] = array();
+
+        // 'Eerste' knop
+        if ($showAllButtons || $currentPage > $neighbourCount + 1) {
+            $addendum = ($currentPage <= $neighbourCount + 1 ? 'disabled' : ''); // nakijken
+            $attributes = "role='button' class='btn btn-default $addendum'";
+            $link = anchor($baseUrl . '0', $firstLink, $attributes);
+
+            array_push($groups['left'], $link);
+        }
+
+        // 'Vorige' knop
+        if ($showAllButtons || $currentPage > 1) {
+            $addendum = ($currentPage <= 1 ? 'disabled' : '');
+            $attributes = "role='button' class='btn btn-default $addendum'";
+            $link = anchor($baseUrl . ($currentRow - $perPage), $prevLink, $attributes);
+
+            array_push($groups['left'], $link);
+        }
+
+        // 'Volgende' knop
+        if ($showAllButtons || $currentPage < $lastPage) {
+            $addendum = ($currentPage >= $lastPage ? 'disabled' : '');
+            $attributes = "role='button' class='btn btn-default $addendum'";
+            $link = anchor($baseUrl . ($currentRow + $perPage), $nextLink, $attributes);
+
+            array_push($groups['right'], $link);
+        }
+
+        // 'Laatste' knop
+        if ($showAllButtons || $currentPage < $lastPage - $neighbourCount) {
+            $addendum = ($currentPage >= $lastPage - $neighbourCount ? 'disabled' : ''); // nakijken
+            $attributes = "role='button' class='btn btn-default $addendum'";
+            $link = anchor($baseUrl . ($totalRows - $perPage), $lastLink, $attributes);
+
+            array_push($groups['right'], $link);
+        }
+
+        // We tonen altijd 2n+1 knoppen, waar n het aantal buren is. Als de
+        // huidige pagina 1 is, tonen we bijvoorbeeld toch vier in plaats van
+        // slechts 2 (bijvoorbeeld).
+        $startPage = ($currentPage - $neighbourCount < 1 ? 1 : $currentPage - $neighbourCount); // lower bound
+        $startPage = ($startPage < $lastPage - 2 * $neighbourCount ? $startPage : $lastPage - 2 * $neighbourCount); // upper bound
+
+        // Als er minder pagina's zijn dan 2n+1, toon ze dan maar allemaal.
+        $pageCount = ($lastPage < 2 * $neighbourCount + 1 ? $lastPage : 2 * $neighbourCount + 1);
+
+        // Maak eindelijk de middelste knoppen.
+        for($i=$startPage; $i<$startPage+$pageCount; $i++) {
+            $addendum = ($i==$currentPage ? 'btn-primary disabled' : 'btn-default'); // nakijken
+            $attributes = "role='button' class='btn $addendum'";
+            $link = anchor($baseUrl . (($i-1) * $perPage), $i, $attributes);
+
+            array_push($groups['middle'], $link);
+        }
+
+        // Voeg alles samen
+        $ret = "\n\n" . $this->spacers(0) . '<div class="btn-toolbar" role="toolbar" aria-label="...">' . "\n";
+        foreach ($groups as $group) {
+            $ret.=$this->spacers(1) . '<div class="btn-group" role="group" aria-label="...">' . "\n";
+            foreach ($group as $line) {
+                $ret.=$this->spacers(2) . $line;
+            }
+            $ret.=$this->spacers(1) . "</div>\n";
+        }
+        $ret.=$this->spacers(0) . "</div>\n\n";
+
+
         return $ret;
     }
 

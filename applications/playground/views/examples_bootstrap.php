@@ -44,12 +44,15 @@ if (!defined('BASEPATH')) {
             
             echo heading('Pagination', 3) . "\n";
             echo $this->typography->auto_typography("Standaard paginering met een bootstrap uiterlijk:");
-            echo $this->bootstrap->paging('examples/bootstrap/', 300, 20, $current_page) . "<br>\n";
+            echo $this->bootstrap->paging('examples/bootstrap/', 100, 10, $current_page) . "<br>\n";
             
             echo $this->typography->auto_typography("Aangepaste paginering met gespleten groepen:");
-            echo $this->bootstrap->pagingSplit('examples/bootstrap/', 300, 20, $current_page) . "<br>\n";
+            echo $this->bootstrap->pagingSplit('examples/bootstrap/', 100, 10, $current_page) . "<br>\n";
             
-            
+            echo $this->typography->auto_typography("TESTEN");
+            echo "Alles: " . $this->bootstrap->paging3('examples/bootstrap/', 100, 10, $current_page, true, true) . "<br>\n";
+            echo "Alleen de nodige: " . $this->bootstrap->paging3('examples/bootstrap/', 100, 10, $current_page, true, false) . "<br>\n";
+
             ?>
 
         </div>
