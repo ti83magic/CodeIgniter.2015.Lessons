@@ -27,7 +27,6 @@ class Table {
     var $spacer = '    ';
     var $class = 'table table-striped';
 
-    
     // Maakt een volledige tabel. Als er een object wordt doorgegeven als $data,
     // dan wordt er een tabel gemaakt met als headers de members van dat object, en 
     // de inhoud van die members als data. Wordt er een array van objecten
@@ -55,8 +54,12 @@ class Table {
         foreach ($data as $entry) {
             $ret .= $this->rowOpen();
 
-            foreach ($fields as $field) {
-                $ret .= $this->data($this->getWaardeVanMember($entry, $field));
+            if ($fields !== null) { // dan was $data een string. Lelijke code!!
+                foreach ($fields as $field) {
+                    $ret .= $this->data($this->getWaardeVanMember($entry, $field));
+                }
+            } else {
+                $ret .= $this->data($entry);
             }
             $ret .= $this->rowClose();
         }
@@ -186,7 +189,9 @@ class Table {
 
     private function prepareParameters($config, $data) {
         if ($config == null) {
-            $config = array_keys(get_object_vars(reset($data)));
+            if (is_object($data)) {
+                $config = array_keys(get_object_vars(reset($data)));
+            }
         }
 
         if (is_string($config)) {
