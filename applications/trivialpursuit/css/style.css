@@ -1,0 +1,68 @@
+/* 
++----------------------------------------------------------
+| Trivial Pursuit - oefening
++----------------------------------------------------------
+| KHK - 2 TI - 201x-201x
++----------------------------------------------------------
+| style.css
+|
++----------------------------------------------------------
+| K. Vangeel
++----------------------------------------------------------
+*/
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: black;
+	background-color: white;
+}
+
+#hoofding {
+	height: 100px;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+#inhoud {
+	position: absolute;
+	top: 110px;
+	left: 70px;
+	padding-top: 20px;
+	margin: 0px 10px 0px 0px;
+}
+
+#voetnoot {
+	background: #154c66;
+	position: absolute;
+	bottom: 0;
+	height: 50px;
+	width: 620px;
+	padding-top: 0px;
+	padding-left: 10px;
+	color: white;
+}
+
+h1 {
+	color: #154c66;
+}
+
+a:link {
+	color: #154c66;
+}
+
+a:active
+{
+	color: #154c66;
+}
+
+a:visited
+{
+	color: #154c66;
+}
+
+a:hover
+{
+	color: #154c66;
+}
