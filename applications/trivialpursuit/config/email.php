@@ -16,8 +16,10 @@ include 'gegevens.php';
 // Configuratiebestand voor de email-library.
 // -----------------------------------------------------------------------------
 
+/*
 $config['protocol'] = 'smtp';
 $config['smtp_host'] = 'ssl://smtp.live.com';
 $config['smtp_user'] = $mailUser;
 $config['smtp_pass'] = $mailPass;
 $config['smtp_port'] = 587;
+*/
