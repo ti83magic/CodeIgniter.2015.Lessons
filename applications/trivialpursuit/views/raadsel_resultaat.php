@@ -17,3 +17,5 @@
 
 Gefeliciteerd, je hebt <?php echo $score ?> punten!
 
+
+<p><?php echo anchor( 'trivialpursuit/index', 'Begin' ); ?></p>
