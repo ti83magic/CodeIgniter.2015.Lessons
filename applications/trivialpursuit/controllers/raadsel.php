@@ -67,7 +67,6 @@ class Raadsel extends CI_Controller {
             $partials = array('header' => 'main_header', 'content' => 'raadsel_resultaat', 'footer' => 'main_footer');
         } else {
             $partials = array('header' => 'main_header', 'content' => 'raadsel_tienoptien', 'footer' => 'main_footer');
-            // STuur een mail!
         }
 
         $this->template->load('main_master', $partials, $data);
