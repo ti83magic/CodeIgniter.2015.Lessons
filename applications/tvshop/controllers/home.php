@@ -24,9 +24,7 @@ class Home extends CI_Controller {
             $data['title'] = 'Home';
             $data['user']  = $this->authex->getUserInfo();
             
-            $partials = array('header' => 'main_header', 'menu' => 'main_menu', 
-                              'content' => 'home_index', 'footer' => 'main_footer');
-            $this->template->load('main_master', $partials, $data);
+            $this->template->call('home_index', $data);
 	}
         
         public function login()

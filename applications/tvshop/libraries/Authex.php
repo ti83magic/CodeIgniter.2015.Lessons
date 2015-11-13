@@ -29,6 +29,7 @@ class Authex {
     {
         // gebruiker is aangemeld als sessievariabele user_id bestaat
         $CI = & get_instance();
+        
         if ($CI->session->userdata('user_id')) {
             return true;
         } else {
@@ -40,6 +41,7 @@ class Authex {
     {
         // geef user-object als gebruiker aangemeld is
         $CI = & get_instance();
+        
         if (! $this->loggedIn()) {
             return null;
         } else {
@@ -52,6 +54,7 @@ class Authex {
     {
         // gebruiker aanmelden met opgegeven email en wachtwoord
         $CI = & get_instance();
+        
         $user = $CI->user_model->getAccount($email, $password);
         if ($user == null) {
             return false;
@@ -66,6 +69,7 @@ class Authex {
     {
         // uitloggen, dus sessievariabele wegdoen
         $CI = & get_instance();
+        
         $CI->session->unset_userdata('user_id');
     }
 
@@ -73,6 +77,7 @@ class Authex {
     {
         // nieuwe gebruiker registreren als email nog niet bestaat
         $CI = & get_instance();
+        
         if ($CI->user_model->emailVrij($email)) {
             $id = $CI->user_model->insert($naam, $email, $password);
             return $id;
@@ -85,6 +90,7 @@ class Authex {
     {
         // nieuwe gebruiker activeren
         $CI = & get_instance();
+        
         $CI->user_model->activeer($id);
     }
 

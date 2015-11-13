@@ -43,6 +43,8 @@ class User_model extends CI_Model {
     function updateLaatstAangemeld($id)
     {
         // pas tijd laatstAangemeld aan
+        $user = new stdClass();
+        
         $user->laatstAangemeld = date("Y-m-d H-i-s");
         $this->db->where('id', $id);
         $this->db->update('tv_user', $user); 
@@ -63,20 +65,28 @@ class User_model extends CI_Model {
     function insert($naam, $email, $password)
     {
         // voeg nieuwe user toe
+        $user = new stdClass();
+        
         $user->naam = $naam;
         $user->email = $email;
         $user->password = sha1($password);
         $user->level = 1;
+        $user->creatie = date("Y-m-d H-i-s");
         $user->laatstAangemeld = date("Y-m-d H-i-s");
         $user->geactiveerd = 0;
+        
         $this->db->insert('tv_user', $user);
+        
         return $this->db->insert_id();
     }
     
     function activeer($id)
     {
         // plaats geactiveerd op 1
+        $user = new stdClass();
+        
         $user->geactiveerd = 1;
+        
         $this->db->where('id', $id);
         $this->db->update('tv_user', $user); 
     }

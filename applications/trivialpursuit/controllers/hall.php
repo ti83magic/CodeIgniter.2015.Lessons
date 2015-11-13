@@ -47,14 +47,14 @@ class Hall extends CI_Controller {
     }
     
     private function email($email) {
-        $this->email->from('ti83magic@hotmail.com', 'Anthony Woudenberg');
+        $this->email->from('r0597125@student.thomasmore.be', 'Anthony Woudenberg');
         $this->email->to($email);
         $this->email->subject('Wat een score!');
         $this->email->message('Fantastisch gedaan, zegt het voort!');
 
         $ret =  $this->email->send();
         
-        //echo $this->email->print_debugger();
+        echo $this->email->print_debugger();
         
         return $ret;
     }

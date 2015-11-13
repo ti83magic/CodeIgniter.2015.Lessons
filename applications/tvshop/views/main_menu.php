@@ -3,6 +3,7 @@
 // iedereen
 echo divAnchor('home/index', 'Home');
 echo divAnchor('product/lijst', 'Productenlijst');
+
 if ($user == null) { // niet aangemeld
     echo divAnchor('home/login', 'Aanmelden');
 } else { // wel aangemeld
