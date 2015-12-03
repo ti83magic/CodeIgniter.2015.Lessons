@@ -21,7 +21,7 @@ and open the template in the editor.
                 en toon.                
             </p>
             <p>
-                Veel plezier!
+                Heel veel plezier!
             </p>
 
             <h2>Applicaties</h2>
