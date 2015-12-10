@@ -2,6 +2,7 @@
 
 include 'gegevens.php';
 
+$config['image_path'] = 'images/fotos/';
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

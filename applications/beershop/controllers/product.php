@@ -17,6 +17,8 @@ class Product extends CI_Controller {
 	{
             parent::__construct();
             $this->load->helper('notation');
+            $this->load->helper('form');
+            
         }
 
 	public function lijst1()
@@ -26,7 +28,8 @@ class Product extends CI_Controller {
             $this->load->model('soort_model');
             $data['soorten'] = $this->soort_model->getAllSoortProduct();
             
-            $partials = array('header' => 'main_header', 'content' => 'les1/product_lijst1');
+            $partials = array('header' => 'main_header', 
+                                'content' => 'les1/product_lijst1');
             $this->template->load('main_master', $partials, $data);
 	}
 
@@ -48,9 +51,26 @@ class Product extends CI_Controller {
             $this->load->model('product_model');
             $data['product'] = $this->product_model->getWithSoortBrouwerij($id);
             
-            $partials = array('header' => 'main_header', 'content' => 'les1/product_detail');
+            $partials = array('header' => 'main_header', 
+                'content' => 'les1/product_detail');
             $this->template->load('main_master', $partials, $data);
 	}
+        
+	public function tabjson()
+	{
+            $data['title']  = 'Brouwerij/product-tab';
+
+            $this->load->model('brouwerij_model');
+            $data['brouwerijen'] = $this->brouwerij_model->getAll();
+            
+            $partials = array('header' => 'main_header', 'content' => 'les3/product_tabjson');
+            $this->template->load('main_master', $partials, $data);
+	}
+        
+        public function json()
+	{
+	}      
+        
 }
 
 /* End of file product.php */

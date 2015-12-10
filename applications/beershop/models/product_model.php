@@ -51,6 +51,12 @@ class Product_model extends CI_Model {
     
     function getWithSoortBrouwerij($id)
     {
+        $this->load->model('soort_model');
+        $this->load->model('brouwerij_model');
+
+        $product = $this->get($id);
+        $product->soort = $this->soort_model->get($product->soortId);
+        $product->brouwerij = $this->brouwerij_model->get($product->brouwerijId);
         
         return $product;
     }    

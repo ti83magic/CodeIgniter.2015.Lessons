@@ -20,27 +20,27 @@
 
             // ---------------------------------------------------------------------
             // Example 2
-            $headers = array('ID', 'First name', 'Last name', 'Married to');
+            $hoofd = array('ID', 'First name', 'Last name', 'Married to');
 
             echo heading('Example 2: Custom headers', 3);
-            echo $this->table->create($people, $headers);
+            echo $this->table->create($people, $hoofd);
 
             // ---------------------------------------------------------------------
             // Example 3
             $fields = array('name', 'surname', 'marriedTo->name');
-            $headers = array('First name', 'Last name', 'Married to');
+            $hoofd = array('First name', 'Last name', 'Married to');
 
             echo heading('Example 3: Custom headers and custom (nested) fields', 3);
-            echo $this->table->create($people, $headers, $fields);
+            echo $this->table->create($people, $hoofd, $fields);
 
             // ---------------------------------------------------------------------
             // Example 4
-            $headers = array('Name', 'Married to');
+            $hoofd = array('Name', 'Married to');
             $this->table->class = 'table table-bordered';
 
             echo heading('Example 4: Constructed, with different markup', 3);
 
-            echo $this->table->open($headers);
+            echo $this->table->open($hoofd);
             foreach ($people as $person) {
                 echo $this->table->rowOpen();
                 echo $this->table->data($person->name . ' ' . $person->surname);

@@ -24,7 +24,14 @@
     });
     
     $(function() {
-        $( "#datum" ).datepicker({ dateFormat: 'dd/mm/yy' });
+        var vandaag = new Date();
+        
+        
+        $( "#datum" ).datepicker(
+                { dateFormat: 'dd/mm/yy',
+            minDate : 0,
+            maxDate : "+14d"
+        });
     });
         
 </script>

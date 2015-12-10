@@ -16,12 +16,9 @@
 <h4><?php echo $title; ?></h4>
 
 <script type="text/javascript">
-  	//------------------
-	// jQuery UI bepalen
-	//------------------
-
+    
 	$(function() {
-       $( ".buttons" ).button();
+                $( ".buttons" ).button();
 	});
         
 </script>
@@ -56,10 +53,15 @@
 
             echo "<h5>jQuery UI</h5>";
 
-            echo divAnchor('', '...', 'class="buttons"' );
-
+            echo divAnchor('jqueryui/modaldialog', 'Modal dialog', 'class="buttons"' );
+            echo divAnchor('jqueryui/tijd', 'Ajax', 'class="buttons"' );
+            
             echo "<h5>Beershop</h5>";
 
+            echo divAnchor('brouwerij/lijst', 'Brouwerijen Validatie', 'class="buttons"' );
+            echo divAnchor('bestelling/lijst', 'Bestellingen Ajax', 'class="buttons"' );
+            echo divAnchor('brouwerij/select', 'Brouwerijen Ajax', 'class="buttons"' );
+            echo divAnchor('soort/lijst', 'Soort/product Ajax', 'class="buttons"' );
             ?>
         </td>
         <td valign="top" style="width:190px">
@@ -67,10 +69,15 @@
 
             echo "<h5>jQuery UI</h5>";
 
-            echo divAnchor('', '...', 'class="buttons"' );
+            echo divAnchor('json/persoonclient', 'Persoon', 'class="buttons"' );
+            echo divAnchor('json/productenclient', 'Producten', 'class="buttons"' );
+            echo divAnchor('json/schoolclient', 'School', 'class="buttons"' );
 
             echo "<h5>Beershop</h5>";
 
+            echo divAnchor('bestelling/zoek', 'Bestellingen zoeken', 'class="buttons"' );
+            echo divAnchor('product/tabjson', 'Brouwerij/product-tab', 'class="buttons"' );
+            
             ?>
         </td>
         <td valign="top" style="width:190px">

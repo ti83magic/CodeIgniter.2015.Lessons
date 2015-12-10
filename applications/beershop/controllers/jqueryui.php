@@ -59,6 +59,25 @@ class Jqueryui extends CI_Controller {
             $this->template->load('main_master', $partials, $data);
 	}
         
+        public function tijd()
+	{
+            $data['title']  = 'Ajax';
+            
+            $partials = array('header' => 'main_header', 'content' => 'les2/jqueryui_tijd');
+            $this->template->load('main_master', $partials, $data);
+	}
+        
+        public function ajax()
+	{
+            $zoekstring = $this->input->get('zoekstring');
+            if ($zoekstring == 'tijd') {
+                $data['nu'] = date('H:i:s');
+            } else {
+                $data['nu'] = date('d/m/Y');
+            }
+            $this->load->view('les2/jqueryui_ajax', $data);
+	}
+        
 }
 
 /* End of file jqueryui.php */

@@ -29,8 +29,11 @@
             src="<?php echo base_url() . APPPATH; ?>js/jquery.js"></script>
     <script type="text/javascript" 
             src="<?php echo base_url() . APPPATH; ?>js/jquery-ui.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" 
+            src="<?php echo base_url() . APPPATH; ?>js/jquery.maskedinput.js"></script>
+     <script type="text/javascript">
         var site_url = '<?php echo site_url();?>';
+		var img_url = '<?php echo base_url() . APPPATH; ?>';
     </script>
 </head>
 <body>
